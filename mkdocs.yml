@@ -6,6 +6,9 @@ site_author: Eloi Junior, Henrique Angar, Joel Francisco, Juliano Cardoso, Loren
 
 repo_name: pjf_engenharia_de_dados
 repo_url: https://github.com/NicolasLK/pjf-engenharia-de-dados
+edit_uri: edit/master/docs/
+
+docs_dir: docs
 
 nav:
   - Home: index.md
