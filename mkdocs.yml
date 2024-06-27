@@ -1,0 +1,19 @@
+site_name: pjf_engenharia_de_dados
+site_description: Documentacao pjf_engenharia_de_dados
+site_author: Eloi Junior, Henrique Angar, Joel Francisco, Juliano Cardoso, Lorenzo, Nicolas Loffi Kaminski, Rafael Castro e Yuri Boppre
+# site_url:
+# site_keywords:
+
+repo_name: pjf_engenharia_de_dados
+repo_url: https://github.com/NicolasLK/pjf-engenharia-de-dados
+edit_uri: edit/master/docs/
+
+docs_dir: docs
+
+nav:
+  - Home: index.md
+  - About: about.md
+theme:
+  name: mkdocs
+extra_css:
+  - style.css
