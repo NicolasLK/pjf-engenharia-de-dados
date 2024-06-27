@@ -19,9 +19,9 @@ Utilizaremos esses dados para criar as seguintes analises:
 
 ## Técnologias utilizadas
 
-- **Amazon S3**: Local de armazenamento de objetos com capacidade de recuperar qualquer volume de dados de qualquer local;
+- **Amazon S3**: Serviço de armazenamento de objetos;
 - **Apache airFlow**: Plataforma para criar, agendar e monitorar fluxos de trabalhos;
-- **Apache Spark**: Mecanismo multilíngue utilizado em engenharia de dados, ciência de dados e aprendizado de máquina;
+- **Apache Spark**: Engine de processamento de dados distribuidos;
 - **Draw.io**: Software de desenho gráfico multiplataforma, utilizado para criar diagramas como fluxogramas, wireframes entre outros;
 - **Microsoft Power BI**: Serviço de análise de negócios e analise de dados;
 - **MKDocs**: Gerador de sites estáticos com foco na montagem em documentação de projetos;
