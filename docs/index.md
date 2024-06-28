@@ -39,5 +39,9 @@ Utilizaremos esses dados para criar as seguintes analises:
 - **MKDocs**: Gerador de sites estáticos com foco na montagem em documentação de projetos;
 - **PostgreSQL**: Poderoso banco de dados relacional de código aberto;
 - **Python**: Linguagem de programação de alto nível, interpretada de script.
-- **Databricks**: Databricks é uma plataforma para trabalhar com o Spark, que fornece gerenciamento automatizado de cluster e notebooks 
+- **Databricks**: Databricks é uma plataforma para trabalhar com o Spark, que fornece gerenciamento automatizado de cluster e notebooks
 - **FigJam Board**: é um quadro branco para que equipes possam realizar sessões de ideação e brainstorming juntos, de forma on-line
+- **SQLAlchemy==2.0.31**: Ferramenta de ORM (Mapeamento Objeto-Relacional) para Python.
+- **com.amazonaws:aws-java-sdk:1.12.751**: SDK da AWS para integração de serviços AWS com aplicações Java.
+- **io.delta:delta-core_2.12:1.2.1**: Implementa o Delta Lake para armazenamento de dados transacional em Apache Spark.
+- **org.apache.hadoop:hadoop-aws:3.4.0**: Integração do Hadoop com os serviços AWS S3.
