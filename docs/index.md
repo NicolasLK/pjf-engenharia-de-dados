@@ -27,3 +27,13 @@ Utilizaremos esses dados para criar as seguintes analises:
 - **MKDocs**: Gerador de sites estáticos com foco na montagem em documentação de projetos;
 - **PostgreSQL**: Poderoso banco de dados relacional de código aberto;
 - **Python**: Linguagem de programação de alto nível, interpretada de script.
+
+
+## Integrantes 
+- Henrique ANgar
+- Joel Francisco
+- Elói Matos
+- Juliano 
+- Nicolas
+- Rafael
+- Yuri Boppre
