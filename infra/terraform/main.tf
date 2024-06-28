@@ -84,6 +84,13 @@ resource "aws_s3_bucket" "gold_bucket" {
   }
 }
 
+resource "aws_s3_bucket" "platinum_bucket" {
+  bucket = "engenharia-dados-satc-platinum-bucket"
+  tags = {
+    Name = "Platinum Bucket"
+  }
+}
+
 
 resource "aws_s3_bucket_policy" "landing_zone_policy" {
   bucket = aws_s3_bucket.landing_zone_bucket.id
@@ -181,6 +188,30 @@ resource "aws_s3_bucket_policy" "gold_policy" {
   })
 }
 
+resource "aws_s3_bucket_policy" "platinum_policy" {
+  bucket = aws_s3_bucket.platinum_bucket.id
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect = "Deny"
+        Principal = "*"
+        Action = "s3:*"
+        Resource = [
+          "arn:aws:s3:::${aws_s3_bucket.platinum_bucket.id}",
+          "arn:aws:s3:::${aws_s3_bucket.platinum_bucket.id}/*"
+        ]
+        Condition = {
+          Bool = {
+            "aws:SecureTransport": "false"
+          }
+        }
+      }
+    ]
+  })
+}
+
 resource "aws_iam_user" "data_access_user" {
   name = "data-access-user"
 }
@@ -211,7 +242,9 @@ resource "aws_iam_policy" "data_access_policy" {
           "arn:aws:s3:::engenharia-dados-satc-silver-bucket",
           "arn:aws:s3:::engenharia-dados-satc-silver-bucket/*",
           "arn:aws:s3:::engenharia-dados-satc-gold-bucket",
-          "arn:aws:s3:::engenharia-dados-satc-gold-bucket/*"
+          "arn:aws:s3:::engenharia-dados-satc-gold-bucket/*",
+          "arn:aws:s3:::engenharia-dados-satc-platinum-bucket",
+          "arn:aws:s3:::engenharia-dados-satc-platinum-bucket/*"
         ]
       }
     ]
@@ -223,3 +256,25 @@ resource "aws_iam_user_policy_attachment" "attach_data_access_policy" {
   policy_arn = aws_iam_policy.data_access_policy.arn
 }
 
+
+module "vpc" {
+  source      = "./modules/vpc"
+  environment = var.environment
+}
+
+module "database" {
+  source         = "./modules/database"
+  environment    = var.environment
+  vpc_id         = module.vpc.vpc_id
+  vpc_cidr_block = module.vpc.vpc_cidr_block
+  route_table_id = module.vpc.route_table_id
+
+  engine_version           = "16.3"
+  instance_class           = "db.t4g.micro"
+  allocated_storage        = 20
+  max_allocated_storage    = 30
+  backup_retention_period  = 0
+  skip_final_snapshot      = true
+  deletion_protection      = false
+  delete_automated_backups = true
+}
