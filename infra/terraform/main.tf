@@ -223,3 +223,25 @@ resource "aws_iam_user_policy_attachment" "attach_data_access_policy" {
   policy_arn = aws_iam_policy.data_access_policy.arn
 }
 
+
+module "vpc" {
+  source      = "./modules/vpc"
+  environment = var.environment
+}
+
+module "database" {
+  source         = "./modules/database"
+  environment    = var.environment
+  vpc_id         = module.vpc.vpc_id
+  vpc_cidr_block = module.vpc.vpc_cidr_block
+  route_table_id = module.vpc.route_table_id
+
+  engine_version           = "16.3"
+  instance_class           = "db.t4g.micro"
+  allocated_storage        = 20
+  max_allocated_storage    = 30
+  backup_retention_period  = 0
+  skip_final_snapshot      = true
+  deletion_protection      = false
+  delete_automated_backups = true
+}
