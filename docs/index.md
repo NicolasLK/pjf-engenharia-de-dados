@@ -20,14 +20,14 @@ Utilizaremos esses dados para criar as seguintes analises:
 
 ## Integrantes
 
-- [Henrique Angar](https://github.com/HenriqueAngar) - RESPONSABILIDADE
-- [Joel Francisco](https://github.com/JoelFrancisco) - RESPONSABILIDADE
-- [Juliano Felipe](https://github.com/julianocfelipe) - RESPONSABILIDADE
-- [Lorenzo Dal Bó](https://github.com/LorenzoDalBo) - RESPONSABILIDADE
-- [Elói Matos](https://github.com/EloiMatos) - RESPONSABILIDADE
-- [Nicolas L. Kaminski](https://github.com/NicolasLK) - RESPONSABILIDADE
-- [Rafael Castro](https://github.com/RafaelDaSilvaCastro) - RESPONSABILIDADE
-- [Yuri Boppre](https://github.com/YuriBoppre) - RESPONSABILIDADE
+- [Henrique Angar](https://github.com/HenriqueAngar) - DESENVOLVIMENTO
+- [Joel Francisco](https://github.com/JoelFrancisco) - DESENVOLVIMENTO
+- [Juliano Felipe](https://github.com/julianocfelipe) - DOCUMENTAÇÃO
+- [Lorenzo Dal Bó](https://github.com/LorenzoDalBo) - DOCUMENTAÇÃO
+- [Elói Matos](https://github.com/EloiMatos) - DESENVOLVIMENTO
+- [Nicolas L. Kaminski](https://github.com/NicolasLK) - DOCUMENTAÇÃO
+- [Rafael Castro](https://github.com/RafaelDaSilvaCastro) - DOCUMENTAÇÃO
+- [Yuri Boppre](https://github.com/YuriBoppre) - DESENVOLVIMENTO
 
 ## Técnologias utilizadas
 
@@ -39,3 +39,5 @@ Utilizaremos esses dados para criar as seguintes analises:
 - **MKDocs**: Gerador de sites estáticos com foco na montagem em documentação de projetos;
 - **PostgreSQL**: Poderoso banco de dados relacional de código aberto;
 - **Python**: Linguagem de programação de alto nível, interpretada de script.
+- **Databricks**: Databricks é uma plataforma para trabalhar com o Spark, que fornece gerenciamento automatizado de cluster e notebooks 
+- **FigJam Board**: é um quadro branco para que equipes possam realizar sessões de ideação e brainstorming juntos, de forma on-line
