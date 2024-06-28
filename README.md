@@ -89,14 +89,14 @@ Fale sobre a versão e o controle de versões para o projeto. Para as versões d
 Mencione todos aqueles que ajudaram a levantar o projeto desde o seu início
 
 
-* [Henrique Angar](https://github.com/HenriqueAngar) - *RESPONSABILIDADE*
-* [Joel Francisco](https://github.com/JoelFrancisco) - *RESPONSABILIDADE*
-* [Juliano Felipe](https://github.com/julianocfelipe) - *RESPONSABILIDADE*
-* [Lorenzo Dal Bó](https://github.com/LorenzoDalBo) - *RESPONSABILIDADE*
-* [Elói Matos](https://github.com/EloiMatos) - *RESPONSABILIDADE* 
-* [Nicolas](https://github.com/NicolasLK) - *RESPONSABILIDADE*
-* [Rafael Castro](https://github.com/RafaelDaSilvaCastro) - *RESPONSABILIDADE*
-* [Yuri Boppre](https://github.com/YuriBoppre) - *RESPONSABILIDADE*
+* [Henrique Angar](https://github.com/HenriqueAngar) - *DESENVOLVIMENTO*
+* [Joel Francisco](https://github.com/JoelFrancisco) - *DESENVOLVIMENTO*
+* [Juliano Felipe](https://github.com/julianocfelipe) - *DOCUMENTAÇÃO*
+* [Lorenzo Dal Bó](https://github.com/LorenzoDalBo) - *DOCUMENTAÇÃO*
+* [Elói Matos](https://github.com/EloiMatos) - *DESENVOLVIMENTO* 
+* [Nicolas](https://github.com/NicolasLK) - *DOCUMENTAÇÃO*
+* [Rafael Castro](https://github.com/RafaelDaSilvaCastro) - *DOCUMENTAÇÃO*
+* [Yuri Boppre](https://github.com/YuriBoppre) - *DESENVOLVIMENTO*
 
 
 
