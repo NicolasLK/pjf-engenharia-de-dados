@@ -1,7 +1,7 @@
 ---
 hide:
   - navigation
-  #- toc # table of contents - menu da direita
+  - toc
 ---
 
 # Projeto Engenharia de Dados
