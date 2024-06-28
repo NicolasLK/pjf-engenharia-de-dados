@@ -52,6 +52,7 @@ Ferramentas utilizadas para a construção desse projeto.
 
 * Apache airFlow + [link](https://airflow.apache.org/) - é uma plataforma criada pela comunidade para criar, agendar e monitorar fluxos de trabalho de maneira programática.
 * PostgreSQL + [link](https://www.postgresql.org/) - PostgreSQL é um poderoso sistema de banco de dados relacional de objeto de código aberto com mais de 35 anos de desenvolvimento ativo que lhe rendeu uma forte reputação de confiabilidade, robustez de recursos e desempenho
+* Databricks + [link](https://www.databricks.com/br/try-databricks?scid=7018Y000001Fi0cQAC&utm_medium=paid+search&utm_source=google&utm_campaign=19829725165&utm_adgroup=147439757256&utm_content=trial&utm_offer=try-databricks&utm_ad=665998511913&utm_term=databricks&gad_source=1&gclid=CjwKCAjwm_SzBhAsEiwAXE2Cv2wct2yXMQHejSEqPVUf-Wx0c01P6LW0UXxH_mWjZbA3V2I3LCvZFRoCn_kQAvD_BwE#account) - Databricks é uma plataforma para trabalhar com o Spark, que fornece gerenciamento automatizado de cluster e notebooks
 * Apache Spark - [link](https://spark.apache.org/) - é um mecanismo multilíngue para execução de engenharia de dados, ciência de dados e aprendizado de máquina em máquinas ou clusters de nó único.
 * Amazon S3 - [link](https://aws.amazon.com/pt/s3/) - rmazenamento de objetos construído para armazenar e recuperar qualquer volume de dados de qualquer local
 * Python - [link](https://www.python.org/) - Python é uma linguagem de programação de alto nível, interpretada de script, imperativa, orientada a objetos, funcional, de tipagem dinâmica e forte.
