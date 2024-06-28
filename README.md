@@ -107,6 +107,20 @@ Fale sobre a versão e o controle de versões para o projeto. Para as versões d
 
 Mencione todos aqueles que ajudaram a levantar o projeto desde o seu início
 
+<<<<<<< HEAD
+
+* [Henrique Angar](https://github.com/HenriqueAngar) - *DESENVOLVIMENTO*
+* [Joel Francisco](https://github.com/JoelFrancisco) - *DESENVOLVIMENTO*
+* [Juliano Felipe](https://github.com/julianocfelipe) - *DOCUMENTAÇÃO*
+* [Lorenzo Dal Bó](https://github.com/LorenzoDalBo) - *DOCUMENTAÇÃO*
+* [Elói Matos](https://github.com/EloiMatos) - *DESENVOLVIMENTO* 
+* [Nicolas](https://github.com/NicolasLK) - *DOCUMENTAÇÃO*
+* [Rafael Castro](https://github.com/RafaelDaSilvaCastro) - *DOCUMENTAÇÃO*
+* [Yuri Boppre](https://github.com/YuriBoppre) - *DESENVOLVIMENTO*
+
+
+
+=======
 * [Henrique Angar](https://github.com/HenriqueAngar) - *Desenvolvimento*
 * [Joel Francisco](https://github.com/JoelFrancisco) - *Desenvolvimento*
 * [Juliano Felipe](https://github.com/julianocfelipe) - *Documentação*
@@ -115,6 +129,7 @@ Mencione todos aqueles que ajudaram a levantar o projeto desde o seu início
 * [Nicolas](https://github.com/NicolasLK) - *Documentação*
 * [Rafael Castro](https://github.com/RafaelDaSilvaCastro) - *Documentação*
 * [Yuri Boppre](https://github.com/YuriBoppre) - *Desenvolvimento*
+>>>>>>> 603411359998b9b1205fc6a1e87548ae562787d6
 
 Você também pode ver a lista de todos os [colaboradores](https://github.com/usuario/projeto/colaboradores) que participaram deste projeto.
 
