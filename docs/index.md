@@ -11,11 +11,23 @@ A proposta do projeto e desenvolver uma pipeline de engenharia de dados...
 
 ## Objetivo do projeto
 
-O objetivo deste projeto é desenvolver um pipeline de dados automatizado que coleta, processa e analisa dados do seguinte dataset, _[Dados originais](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)_.
+O objetivo deste projeto é desenvolver um pipeline de dados automatizado que coleta, processa e torne possivel a analise deles. Os dados originais são do seguinte _[Dataset](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)_, para ser possivel utiliza-los, foi necessario armazena-los em um banco relacional.
+<br>
 Utilizaremos esses dados para criar as seguintes analises:
 
 - **Vendas**: Será informado o volume, vendedores, valor medio do frete, valor total do frete e etc;
 - **Entregas**: Será informado o tempo médio em dias, volume médio produtos, volume total produtos, massa média produtos e massa total produtos.
+
+## Integrantes
+
+- [Henrique Angar](https://github.com/HenriqueAngar) - RESPONSABILIDADE
+- [Joel Francisco](https://github.com/JoelFrancisco) - RESPONSABILIDADE
+- [Juliano Felipe](https://github.com/julianocfelipe) - RESPONSABILIDADE
+- [Lorenzo Dal Bó](https://github.com/LorenzoDalBo) - RESPONSABILIDADE
+- [Elói Matos](https://github.com/EloiMatos) - RESPONSABILIDADE
+- [Nicolas L. Kaminski](https://github.com/NicolasLK) - RESPONSABILIDADE
+- [Rafael Castro](https://github.com/RafaelDaSilvaCastro) - RESPONSABILIDADE
+- [Yuri Boppre](https://github.com/YuriBoppre) - RESPONSABILIDADE
 
 ## Técnologias utilizadas
 
