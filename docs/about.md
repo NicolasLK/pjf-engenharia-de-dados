@@ -16,11 +16,43 @@ Codigo aqui
 
 ### 2. Processamento de Dados
 
-- Desenho da Arquitetura:
+- O processamento segue o seguinte fluxo:
   <br>
 
 ![Desenho_da_Arquitetura](../assets/Modelo_Arquitetura.png)
 
-### 3. Análise de Dados
+- Alguns pontos a serem comentados:
 
-### 4. Automação
+```bash
+Codigo aqui
+```
+
+- **Explicação:**
+
+<hr>
+
+```bash
+Codigo aqui
+```
+
+- **Explicação:**
+
+<hr>
+
+```bash
+Codigo aqui
+```
+
+- **Explicação:**
+
+### 3. Automação
+
+- O carregamento de dados na pipeline é realizado automaticamente por meio do método airflow.
+  <br>
+  **Explicação:**
+
+  **Exeplo:**
+
+```bash
+Codigo aqui
+```
