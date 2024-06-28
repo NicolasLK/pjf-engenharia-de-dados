@@ -268,8 +268,135 @@ spark = SparkSession.builder \
   pedidos = spark.read.format(&quot;delta&quot;).load(f'{silver_bucket}/pedidos')
   localizacoes = spark.read.format(&quot;delta&quot;).load(f'{silver_bucket}/localizacoes')
 </code></pre>
-<p>-</p>
-<pre><code class="language-bash">
+<ul>
+<li>Renomeando colunas para utilizar IDs sequenciais.</li>
+</ul>
+<pre><code class="language-bash"># Renomear colunas e adicionar IDs sequenciais
+pedidos = pedidos.withColumn('sk_pedido', monotonically_increasing_id())
+localizacoes = localizacoes.withColumn('sk_loc', col('cep').cast(IntegerType()))
+
+# Calcular volume e massa dos pedidos
+pedidos = pedidos.withColumn('volume', (col('comprimento_cm') * col('altura_cm') * col('largura_cm')) / (100*100*100))
+pedidos = pedidos.withColumn('massa', col('peso_g') / 1000)
+</code></pre>
+<ul>
+<li>Selecionando colunas para realizar transações.</li>
+</ul>
+<pre><code class="language-bash"># Selecionar colunas para transações
+transacoes = pedidos.select(
+    col('sk_pedido').alias('sk_pedido'),
+    col('idcliente').alias('idcliente'),
+    col('idvendedor').alias('idvendedor'),
+    col('pagamento').alias('pagamento'),
+    co
+</code></pre>
+<ul>
+<li>Criando tebelas ENTREGAS e PEDIDOS.</li>
+</ul>
+<pre><code class="language-bash">### CRIANDO ENTREGAS ###
+entregas = pedidos.select(
+    col('sk_pedido').alias('sk_pedido'),
+    col('categoria').alias('categoria'),
+    col('statuspedido').alias('statuspedido'),
+    col('cepcliente').alias('cepcliente'),
+    col('cepvendedor').alias('cepvendedor')
+)
+entregas = entregas.join(localizacoes.withColumnRenamed('sk_loc', 'destino'), entregas.cepcliente == localizacoes.cep, 'left')
+
+entregas = entregas.select(
+    col('sk_pedido').alias('sk_pedido'),
+    col('categoria').alias('categoria'),
+    col('statuspedido').alias('statuspedido'),
+    col('destino').alias('destino'),
+    col('cepvendedor').alias('cepvendedor')
+)
+
+entregas = entregas.join(localizacoes.withColumnRenamed('sk_loc', 'origem'), entregas.cepvendedor == localizacoes.cep, 'left')
+
+entregas = entregas.select(
+    col('sk_pedido').alias('sk_pedido'),
+    col('categoria').alias('categoria'),
+    col('statuspedido').alias('statuspedido'),
+    col('origem').alias('origem'),
+    col('destino').alias('destino')
+)
+
+### CRIANDO PEDIDOS ###
+
+pedidos = pedidos.withColumn('datacompra', to_date(col('datacompra')))
+pedidos = pedidos.withColumn('datacliente', to_date(col('datacliente')))
+pedidos = pedidos.withColumn('prazo', to_date(col('prazo')))
+
+pedidos = pedidos.withColumn('ped_diasentrega', (col('datacliente').cast('long') - col('datacompra').cast('long')) / (24*60*60))
+pedidos = pedidos.withColumn('ped_diasprazo', (col('prazo').cast('long') - col('datacompra').cast('long')) / (24*60*60))
+
+fato = pedidos.select(
+    col('sk_pedido').alias('sk_pedido'),
+    col('datacompra').alias('datacompra'),
+    col('iditem').alias('iditem'),
+    col('preco').alias('preco'),
+    col('frete').alias('frete'),
+    col('volume').alias('volume'),
+    col('massa').alias('massa'),
+    col('ped_diasentrega').alias('ped_diasentrega'),
+    col('ped_diasprazo').alias('ped_diasprazo')
+)
+
+datas = datas.withColumn('dt_data', to_date(col('dt_data')))
+fato = fato.join(datas, fato.datacompra == datas.dt_data, 'left').select(
+    col('sk_pedido').alias('sk_pedido'),
+    col('sk_data').alias('sk_data'),
+    col('iditem').alias('iditem'),
+    col('preco').alias('preco'),
+    col('frete').alias('frete'),
+    col('volume').alias('volume'),
+    col('massa').alias('massa'),
+    col('ped_diasentrega').alias('ped_diasentrega'),
+    col('ped_diasprazo').alias('ped_diasprazo')
+)
+</code></pre>
+<ul>
+<li>Utilizando a função Haversine(Calculo da distancia entre duas coordenadas) e aplicando no DataFrame.</li>
+</ul>
+<pre><code class="language-bash"># Função Haversine
+def haversine(lat1, lon1, lat2, lon2):
+    if lat1 is None or lon1 is None or lat2 is None or lon2 is None:
+        return None
+
+    R = 6371.0  # Raio da Terra em quilômetros
+
+    lat1_rad = math.radians(lat1)
+    lon1_rad = math.radians(lon1)
+    lat2_rad = math.radians(lat2)
+    lon2_rad = math.radians(lon2)
+
+    dlat = lat2_rad - lat1_rad
+    dlon = lon2_rad - lon1_rad
+
+    a = math.sin(dlat / 2)**2 + math.cos(lat1_rad) * math.cos(lat2_rad) * math.sin(dlon / 2)**2
+    c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
+
+    distance = R * c
+    return distance
+
+# Registrar a função como UDF
+haversine_udf = udf(haversine, DoubleType())
+
+# Aplicar a UDF ao DataFrame
+pedidos = pedidos.withColumn('distancia_km', haversine_udf(pedidos['lat1'], pedidos['long1'], pedidos['lat2'], pedidos['long2']))
+
+pedidos = pedidos.drop('lat1', 'long1', 'lat2', 'long2')
+</code></pre>
+<ul>
+<li>Salvando dados na camada <em>Gold</em>.</li>
+</ul>
+<pre><code class="language-bash">### SALVAR TABELAS NA CAMADA GOLD ###
+
+datas.write.format(&quot;delta&quot;).mode('overwrite').save(f'{gold_bucket}/dim_data')
+fato.write.format(&quot;delta&quot;).mode('overwrite').save(f'{gold_bucket}/fato_pedidos')
+entregas.write.format(&quot;delta&quot;).mode('overwrite').save(f'{gold_bucket}/dim_entregas')
+transacoes.write.format(&quot;delta&quot;).mode('overwrite').save(f'{gold_bucket}/dim_transacao')
+localizacoes.write.format(&quot;delta&quot;).mode('overwrite').save(f'{gold_bucket}/dim_localizacoes')
 </code></pre>
 <!-- ### 3. Automação
 
