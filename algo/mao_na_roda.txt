@@ -1,0 +1,4 @@
+
+
+Fonte = PostgreSQL.Database("dbdatawarehouse.postgres.database.azure.com", "postgres"),
+moskit_Schema = Fonte{[  Schema="cs", Item= v_csm      ]}[Data],
