@@ -245,15 +245,43 @@ temp.write.format(&quot;delta&quot;).mode('overwrite').save(f'{silver_bucket}/pe
 localizacoes.write.format(&quot;delta&quot;).mode('overwrite').save(f'{silver_bucket}/localizacoes')
 datas.write.format(&quot;delta&quot;).mode('overwrite').save(f'{silver_bucket}/dim_data')
 </code></pre>
-<h3 id="3-automacao">3. Automação</h3>
+<hr>
+
+<h4 id="camada-silver">Camada <em>Silver</em></h4>
+<p>Entrando na camada <em>Silver</em>.
+<br></p>
 <ul>
-<li>O carregamento de dados na pipeline é realizado automaticamente por meio do método airflow.
-  <br>
-  <strong>Explicação:</strong></li>
+<li>Nova camada, nova sessão Spark.</li>
 </ul>
-<p><strong>Exeplo:</strong></p>
-<pre><code class="language-bash">Codigo aqui
-</code></pre></div>
+<pre><code class="language-bash"># Iniciando uma SparkSession com Delta Lake
+spark = SparkSession.builder \
+    .appName(&quot;SilverLayer&quot;) \
+    .config(&quot;spark.sql.extensions&quot;, &quot;io.delta.sql.DeltaSparkSessionExtension&quot;) \
+    .config(&quot;spark.sql.catalog.spark_catalog&quot;, &quot;org.apache.spark.sql.delta.catalog.DeltaCatalog&quot;) \
+    .getOrCreate()
+</code></pre>
+<ul>
+<li>Carregando os dados na camada <em>Silver</em>.</li>
+</ul>
+<pre><code class="language-bash">  # Carregar arquivos Delta da camada silver
+  datas = spark.read.format(&quot;delta&quot;).load(f'{silver_bucket}/dim_data')
+  pedidos = spark.read.format(&quot;delta&quot;).load(f'{silver_bucket}/pedidos')
+  localizacoes = spark.read.format(&quot;delta&quot;).load(f'{silver_bucket}/localizacoes')
+</code></pre>
+<p>-</p>
+<pre><code class="language-bash">
+</code></pre>
+<!-- ### 3. Automação
+
+- O carregamento de dados na pipeline é realizado automaticamente por meio do método airflow.
+  <br>
+  **Explicação:**
+
+  **Exeplo:**
+
+```bash
+Codigo aqui
+``` --></div>
             </div>
         </div>
 
